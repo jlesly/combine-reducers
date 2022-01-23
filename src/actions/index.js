@@ -1,27 +1,15 @@
-export const addAuthor = author => {
-  return {
-    type: 'ADD_AUTHOR',
-    author
-  };
-};
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers/manageAuthorsAndBooks';
 
-export const removeAuthor = id => {
-  return {
-    type: 'REMOVE_AUTHOR',
-    id
-  };
-};
 
-export const addBook = book => {
-  return {
-    type: 'ADD_BOOK',
-    book
-  };
-};
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-export const removeBook = id => {
-  return {
-    type: 'REMOVE_BOOK',
-    id
-  };
-};
+ReactDOM.render( 
+  <Provider store = { store } >
+    <App/>
+    </Provider>,document.getElementById('root')
+);
